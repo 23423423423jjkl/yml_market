@@ -1,1 +1,8 @@
 name = Views export YML
+description = Views plugins for generating pages in YML format, used at http://market.yandex.ru
+dependencies[] = views
+core = 7.x
+
+files[] = views_export_yml.module
+files[] = includes/yandexmarket.views.inc
+files[] = includes/yandexmarket_plugin_style.inc

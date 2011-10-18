@@ -1,0 +1,302 @@
+<?php
+/**
+ * @file
+ * Primarily Drupal hooks and global API functions that defines YML data.
+ */
+
+/**
+ * Define all <offer> tags and attributes, avaiable in YML
+ *
+ * @return
+ *   An associative array of YML <offer> fields. Each value is array, with the following keys:
+ *   - 'description'
+ *       description of current field.
+ */
+function views_export_yml_fields() {
+  return array(
+    'id' => array(
+      'description' => t('ID of offer'),
+    ),
+    'bid' => array(
+      'description' => t('General rate. Applies to all places priority placement offers, if not specified rate for an individual seat.'),
+    ),
+    'cbid' => array(
+      'description' => t('Rate for cards. Used only for the pages "Card model" and "All Models".
+      If neither attribute(bid or cbid) is not specified, - to determine the price clique used fixed prices, as described in the "General Conditions". If you specify bid, but not specified cbid, it is considered that cbid = bid. When asked cbid, but not specified bid, a bid equal to a fixed price per click.'),
+    ),
+    'available' => array(
+      'description' => t('The status of availability of goods - in stock / on order.
+      available = "false" - commodity proposal to order. Shop is ready to deliver the goods on these conditions during the month (period may be more for the goods that all market participants are supplied only on request) .. Those product offerings, which orders are not accepted, should not be discharged in Yandex.Market.
+      available = "true" - a proposal commodity available. Shop is ready to immediately negotiate with the buyer on delivery of goods
+      A more accurate description can be found in the requirements for promotional materials.'),
+    ),
+    'type' => array(
+      'description' => t('YML has several types of descriptions of proposals goods: &lt;vendor.model&gt;, &lt;book&gt;, &lt;artist.title&gt;,&lt;tour&gt;,&lt;ticket&gt; and &lt;event-ticket&gt;. Depending on the type of description is based on the relevant fields.'),
+    ),
+    'url' => array(
+      'description' => t('URL of the page product'),
+    ),
+    'price' => array(
+      'description' => t('The price of item. Price is rounded and displayed according to user preferences.'),
+    ),
+    'local_delivery_cost' => array(
+      'description' => t('Cost of delivery for your region.'),
+    ),
+    'currencyId' => array(
+      'description' => t('Id of currency (RUR, USD, UAH, KZT). To correctly display the prices in national currency, you must use the identifier (eg, UAH) with the corresponding value prices.'),
+    ),
+    'categoryId' => array(
+      'description' => t('Product Category ID (integer not more than 18 characters). Item can only belong to one category.'),
+    ),
+    'picture' => array(
+      'description' => t('Link to a picture of item. It is unacceptable to give a reference to "cap", ie on the picture where it says "No picture" or to the shop logo.'),
+    ),
+    'typePrefix' => array(
+      'description' => t('Product group \ category.'),
+    ),
+    'vendor' => array(
+      'description' => t('Manufacturer.'),
+    ),
+    'model' => array(
+      'description' => t('Model.'),
+    ),
+    'name' => array(
+      'description' => t('Name of item. 255 character max. If the length of the description goes beyond the permissible value, the text is cut off and finally put an ellipsis.'),
+    ),
+    'delivery' => array(
+      'description' => t('Element indicating the possibility to deliver the required goods. 
+      "false" this product can not be delivered ("self-delivery").
+      "true" product is delivered on terms that are specified in the affiliate interface http://partner.market.yandex.ru on the "Edit" page.'),
+    ),
+    'description' => array(
+      'description' => t('Description of item. 255 character max. If the length of the description goes beyond the permissible value, the text is cut off and finally put an ellipsis.'),
+    ),
+    'vendorCode' => array(
+      'description' => t('Code of item definded by manufacturer.'),
+    ),
+    'local_delivery_cost' => array(
+      'description' => t('The cost of delivery of the goods in local region.'),
+    ),
+
+    'sales_notes' => array(
+      'description' => t('Element is designed to show users what distinguishes this product from others, or to describe the stock shop (except discount). The permissible length of text in the element - 50 characters.'),
+    ),
+    'manufacturer_warranty' => array(
+      'description' => t("Element is intended to mark the goods with the official manufacturer's warranty."),
+    ),
+    'country_of_origin' => array(
+      'description' => t('The element is intended to indicate the country of production of goods.'),
+    ),
+    'downloadable' => array(
+      'description' => t('The element is designate a product which can be downloaded.'),
+    ),
+
+
+    'author' => array(
+      'description' => t('Author works'),
+    ),
+    'publisher' => array(
+      'description' => t('Publisher.'),
+    ),
+    'series' => array(
+      'description' => t('Series.'),
+    ),
+    'year' => array(
+      'description' => t('Publication year.'),
+    ),
+    'ISBN' => array(
+      'description' => t('Code of book, if there are several, then specified using a comma.'),
+    ),
+    'volume' => array(
+      'description' => t('Volume number.'),
+    ),
+    'part' => array(
+      'description' => t('Part number.'),
+    ),
+    'language' => array(
+      'description' => t('Language.'),
+    ),
+    'binding' => array(
+      'description' => t('Binding.'),
+    ),
+    'page_extent' => array(
+      'description' => t('Number of pages in the book, must be a positive number.'),
+    ),
+    'table_of_contents' => array(
+      'description' => t('Contents. The details of the names of works, if this is a collection of short stories or poems.'),
+    ),
+    
+    
+    'performed_by' => array(
+      'description' => t('Artist. If there are several, should be comma-separated.'),
+    ),
+    'performance_type' => array(
+      'description' => t('Type od audiobook.'),
+    ),
+    'format' => array(
+      'description' => t('The format of audiobook.'),
+    ),
+    'storage' => array(
+      'description' => t('The carrier, on which audiobook comes.'),
+    ),
+    'recording_length' => array(
+      'description' => t('Playing time is in format mm.ss (minuty. seconds).'),
+    ),
+    
+    
+    'artist' => array(
+      'description' => t('Artist.'),
+    ),
+    'title' => array(
+      'description' => t('Title.'),
+    ),
+    'year' => array(
+      'description' => t('Year.'),
+    ),
+    'media' => array(
+      'description' => t('Media.'),
+    ),
+    'starring' => array(
+      'description' => t('Starring.'),
+    ),
+    'director' => array(
+      'description' => t('Director.'),
+    ),
+    'originalName' => array(
+      'description' => t('Original name.'),
+    ),
+    'country' => array(
+      'description' => t('Country.'),
+    ),
+    'worldRegion' => array(
+      'description' => t('World region.'),
+    ),
+    'region' => array(
+      'description' => t('Resort or city.'),
+    ),
+    'days' => array(
+      'description' => t('Number of days of the tour.'),
+    ),
+    'dataTour' => array(
+      'description' => t('Dates of tour.'),
+    ),
+    'hotel_stars' => array(
+      'description' => t('Stars S Hotel 5 *****.'),
+    ),
+    'room' => array(
+      'description' => t('Room type (SNG, DBL ......).'),
+    ),
+    'meal' => array(
+      'description' => t('Type of meals (All, HB......).'),
+    ),
+    'included' => array(
+      'description' => t('What is included in the tour price.'),
+    ),
+    'transport' => array(
+      'description' => t('Transport.'),
+    ),
+    'place' => array(
+      'description' => t('Place'),
+    ),
+    'hall plan' => array(
+      'description' => t('Link to the picture version of the hall (NOT FULLY IMPLEMENTED)'),
+    ),
+    'date' => array(
+      'description' => t('Date and time of the session. Specified in ISO 8601 format: YYYY-MM-DDThh: mm'),
+    ),
+    'is_premiere' => array(
+      'description' => t('Symptom premiere event'),
+    ),
+    'is_kids' => array(
+      'description' => t("Symptom Children's Activities"),
+    ),
+  );
+}
+
+/**
+ * Returns list of <offer> attributes
+ *     
+ */
+function views_export_yml_offerattributes() {
+  return array('id', 'bid', 'cbid', 'available', 'type');
+}
+
+/**
+ * Returns associative array with offer types as keys 
+ * and list of <offer> tags for current type as values
+ *   
+ * @param $type
+ *   If given returns list of tags only for $type
+ */
+function views_export_yml_offertags($type = FALSE) {
+  $general = array('url', 'price', 'local_delivery_cost', 'currencyId', 'categoryId', 'picture');
+  $yandexmarket_offertags['easy'] = array_merge($general, array(
+  'name','description'));
+  
+  $yandexmarket_offertags['vendor.model'] = array_merge($general, array('typePrefix',
+  'vendor', 'model', 'name', 'delivery', 'description', 'vendorCode', 'local_delivery_cost',
+  'sales_notes', 'manufacturer_warranty', 'country_of_origin', 'downloadable'));
+
+  $yandexmarket_offertags['book'] = array_merge($general, array('author', 'name',
+  'publisher', 'series', 'year', 'ISBN', 'description', 'volume', 'part', 'language', 'binding', 'page_extent',
+  'table_of_contents'));	
+  $yandexmarket_offertags['audiobook'] = array_merge($general, array('author',
+  'name', 'publisher', 'series', 'year', 'ISBN', 'description', 'performed_by', 'performance_type',
+  'language', 'volume', 'part', 'format', 'storage', 'recording_length', 'table_of_contents'));
+  
+  $yandexmarket_offertags['artist.title'] = array_merge($general, array('artist', 'title', 'year', 'media',
+  'starring', 'director', 'originalName', 'country'));
+  
+  $yandexmarket_offertags['tour'] = array_merge($general, array('worldRegion', 'country', 'region', 'days',
+  'dataTour', 'name', 'hotel_stars', 'room', 'meal', 'included', 'transport', 'description'));
+  $yandexmarket_offertags['event-ticket'] = array_merge($general, array('name', 'place', 'hall plan',
+  'date', 'is_premiere', 'is_kids'));
+  if ($type) {
+    return $yandexmarket_offertags[$type];
+  }
+  return $yandexmarket_offertags;
+}
+
+/**
+ * Returns list of offer types defined in YML
+ *   
+ * @param $id
+ *   If given returns list of offer types that use $id tag.
+ */
+function views_export_yml_types($id = FALSE) {
+  $types = array();
+  foreach (views_export_yml_offertags() as $k => $v) {
+    if (!$id || in_array($id,  $v)) {
+      $types[] = $k;
+    }
+  }
+  return $types;
+}
+
+/**
+ * Implementation of hook_views_api().
+ */
+function views_export_yml_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'views_export_yml') .'/includes',
+  );
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function views_export_yml_theme() {
+  $path = drupal_get_path('module', 'views_export_yml');
+  require_once "./$path/theme/theme.inc";
+  return array(
+    'yandexmarket_style_plugin' => array(
+      'arguments' => array('form' => NULL),
+      'file' => 'theme/theme.inc',
+  ),
+    'yandexmarket_content_view_multiple_field' => array(
+      'arguments' => array('items' => NULL, 'field' => NULL, 'data' => NULL),
+      'file' => 'theme/theme.inc',
+  ),
+  );
+}
