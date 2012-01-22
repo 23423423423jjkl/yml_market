@@ -12,7 +12,7 @@
  *   - 'description'
  *       description of current field.
  */
-function views_export_yml_fields() {
+function yandexmarket_fields() {
   return array(
     'id' => array(
       'description' => t('ID of offer'),
@@ -217,7 +217,7 @@ function views_export_yml_fields() {
  * Returns list of <offer> attributes
  *     
  */
-function views_export_yml_offerattributes() {
+function yandexmarket_offerattributes() {
   return array('id', 'bid', 'cbid', 'available', 'type');
 }
 
@@ -228,7 +228,7 @@ function views_export_yml_offerattributes() {
  * @param $type
  *   If given returns list of tags only for $type
  */
-function views_export_yml_offertags($type = FALSE) {
+function yandexmarket_offertags($type = FALSE) {
   $general = array('url', 'price', 'local_delivery_cost', 'currencyId', 'categoryId', 'picture');
   $yandexmarket_offertags['easy'] = array_merge($general, array(
   'name','description'));
@@ -263,9 +263,9 @@ function views_export_yml_offertags($type = FALSE) {
  * @param $id
  *   If given returns list of offer types that use $id tag.
  */
-function views_export_yml_types($id = FALSE) {
+function yandexmarket_types($id = FALSE) {
   $types = array();
-  foreach (views_export_yml_offertags() as $k => $v) {
+  foreach (yandexmarket_offertags() as $k => $v) {
     if (!$id || in_array($id,  $v)) {
       $types[] = $k;
     }
@@ -276,18 +276,18 @@ function views_export_yml_types($id = FALSE) {
 /**
  * Implementation of hook_views_api().
  */
-function views_export_yml_views_api() {
+function yandexmarket_views_api() {
   return array(
     'api' => 3,
-    'path' => drupal_get_path('module', 'views_export_yml') .'/includes',
+    'path' => drupal_get_path('module', 'yandexmarket') .'/includes',
   );
 }
 
 /**
  * Implementation of hook_theme().
  */
-function views_export_yml_theme() {
-  $path = drupal_get_path('module', 'views_export_yml');
+function yandexmarket_theme() {
+  $path = drupal_get_path('module', 'yandexmarket');
   require_once "./$path/theme/theme.inc";
   return array(
     'yandexmarket_style_plugin' => array(

@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * Install File
+ */
+/**
+ * Implementation of hook_uninstall().
+ */
+function yandexmarket_uninstall() {
+  $ret = array();
+
+  if (db_table_exists('views_display')) {
+    $displays = array(
+      'pagenolayout', 
+    );
+    db_query("DELETE FROM {views_display} WHERE display_plugin IN ('". implode("','", $displays) ."')");
+    db_query("DELETE FROM {cache_views}");
+  }
+
+  return $ret;
+}
+?>
